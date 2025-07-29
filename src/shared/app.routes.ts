@@ -4,8 +4,8 @@ import {
   type RouteRecordRaw,
 } from "vue-router";
 import TeacherPage from "../features/teacher/presentations/pages/TeacherPage.vue";
-import AuthPage from "../features/auth/presentation/pages/AuthPage.vue";
-import TeacherDashboard from "../features/dashboard/presentation/pages/TeacherDashboard.vue";
+import AuthPage from "../features/auth/presentations/pages/AuthPage.vue";
+import TeacherDashboard from "../features/dashboard/presentations/pages/TeacherDashboard.vue";
 
 const routes: Readonly<RouteRecordRaw[]> = [
   { path: "/auth", component: AuthPage, meta: { requiresAuth: false } },
