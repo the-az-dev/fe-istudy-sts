@@ -1,11 +1,12 @@
 import {defineConfig} from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from '@tailwindcss/vite';
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [vue(), tailwindcss()],
-    base: "",
+    plugins: [tsconfigPaths(), vue(), tailwindcss()],
+    base: "/fe-istudy-sts/",
     resolve: {
         alias: {
             "@app": "/src/app",
@@ -28,3 +29,16 @@ export default defineConfig({
         }
     }
 });
+
+//
+// function getPathsFromTsConfig() {
+//     const tsconfig_s = fs
+//         .readFileSync('./tsconfig.json', 'utf-8')
+//         .replace(/\/\/.*$/gm, '') // Removing comments
+//     const tsconfig = JSON.parse(tsconfig_s)
+//     const aliases = {}
+//     for (const [key, value] of Object.entries(tsconfig.compilerOptions.paths)) {
+//         aliases[key] = path.resolve(__dirname, value[0])
+//     }
+//     return aliases
+// }

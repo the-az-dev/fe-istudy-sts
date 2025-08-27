@@ -60,5 +60,5 @@
 <style></style>
 
 <script lang="ts" setup>
-import {Button} from '@shared/components/button';
+import {Button} from '../../../../shared/components/button';
 </script>
