@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "bunx --bun vite --host",
     "build": "vue-tsc -b && npx vite build",
-    "build:bun": "vue-tsc -b && bunx --bun vite build",
+    "build:bun": "vue-tsc -b && bunx --bun vite build && git subtree push --prefix dist origin gh-pages && gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
