@@ -8,7 +8,6 @@ export default defineConfig({
     base: "",
     resolve: {
         alias: {
-            "@": "/src",
             "@app": "/src/app",
             "@shared": "/src/shared",
             "@features": "/src/features",
