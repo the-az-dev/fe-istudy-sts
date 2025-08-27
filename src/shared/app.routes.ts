@@ -8,7 +8,8 @@ import AuthPage from "../features/auth/presentations/pages/AuthPage.vue";
 import TeacherDashboard from "../features/dashboard/presentations/pages/TeacherDashboard.vue";
 
 const routes: Readonly<RouteRecordRaw[]> = [
-  { path: "/auth", component: AuthPage, meta: { requiresAuth: false } },
+  { path: "", component: TeacherDashboard, meta: { requiresAuth: true } },
+  { name: "login", path: "/auth", component: AuthPage, meta: { requiresAuth: false } },
   {
     path: "/teacher",
     component: TeacherPage,
@@ -28,15 +29,15 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   const isAuthenticated = !!localStorage.getItem('token')
+router.beforeEach((to, _, next) => {
+  const isAuthenticated = !!localStorage.getItem("token");
 
-//   if (to.meta.requiresAuth && !isAuthenticated) {
-//     next({ name: 'Login' })
-//   } else {
-//     next()
-//   }
-// })
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
+});
 
 // router.onError((error) => {
 //   console.error('Router error:', error)
