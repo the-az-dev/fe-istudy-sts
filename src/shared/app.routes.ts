@@ -21,7 +21,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/fe-istudy-sts/'),
     routes,
 });
 
