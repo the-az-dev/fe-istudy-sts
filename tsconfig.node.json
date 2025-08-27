@@ -7,14 +7,6 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    //    "baseUrl": ".",
-    //    "paths": {
-    //      "@/*": ["src/*"],
-    //      "@app/*": ["src/app/*"],
-    //      "@shared/*": ["src/shared/*"],
-    //      "@features/*": ["src/features/*"]
-    //    },
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
