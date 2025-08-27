@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [vue(), tailwindcss()],
-    base: "",
+    base: "/fe-istudy-sts/",
     resolve: {
         alias: {
             "@": "/src",
@@ -14,4 +14,18 @@ export default defineConfig({
             "@features": "/src/features",
         },
     },
+    build: {
+        outDir: 'dist',
+        assetsDir: 'assets',
+        // Генерувати source maps для дебагу
+        sourcemap: true,
+        // Оптимізація чанків
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vendor: ['vue', 'vue-router']
+                }
+            }
+        }
+    }
 });

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import "@shared/styles/main.css";
 </script>
 
 <template>
-  <router-view />
+  <router-view/>
 </template>
