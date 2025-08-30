@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "bunx --bun vite --host",
+    "dev:bun": "DEST=base bunx --bun vite --host",
+    "dev:node": "DEST=base npx vite --host",
     "build": "vue-tsc -b && npx vite build",
     "build:bun": "vue-tsc -b && bunx --bun vite build",
     "build:gh:bun": "DEST=gh bun run build:bun && cp dist/index.html dist/404.html && git subtree push --prefix dist origin gh-pages && gh-pages -d dist",
