@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory, type RouteRecordRaw,} from "vue-router";
-import TeacherPage from "../features/teacher/presentations/pages/TeacherPage.vue";
-import AuthPage from "../features/auth/presentations/pages/AuthPage.vue";
-import TeacherDashboard from "../features/dashboard/presentations/pages/TeacherDashboard.vue";
+import TeacherPage from "@features/teacher/presentations/pages/TeacherPage.vue";
+import AuthPage from "@features/auth/presentations/pages/AuthPage.vue";
+import TeacherDashboard from "@features/dashboard/presentations/pages/TeacherDashboard.vue";
 
 const routes: Readonly<RouteRecordRaw[]> = [
     {path: "", component: TeacherDashboard, meta: {requiresAuth: true}},
@@ -21,7 +21,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
 ];
 
 const router = createRouter({
-    history: createWebHistory("/fe-istudy-sts/"),
+    history: createWebHistory(process.env.DEST === 'gh' ? "/fe-istudy-sts/" : undefined),
     routes,
 });
 
