@@ -21,4 +21,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+dist/*
 dist
+
+package-lock.json

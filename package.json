@@ -5,18 +5,23 @@
   "type": "module",
   "scripts": {
     "dev": "bunx --bun vite --host",
-    "build": "vue-tsc -b && npx vite build && cp dist/index.html dist/404.html",
-    "build:bun": "vue-tsc -b && bunx --bun vite build && cp dist/index.html dist/404.html && git subtree push --prefix dist origin gh-pages && gh-pages -d dist",
+    "build": "vue-tsc -b && npx vite build",
+    "build:bun": "vue-tsc -b && bunx --bun vite build",
+    "build:gh:bun": "DEST=gh bun run build:bun && cp dist/index.html dist/404.html && git subtree push --prefix dist origin gh-pages && gh-pages -d dist",
+    "build:gh:node": "DEST=def bun run build && cp dist/index.html dist/404.html && git subtree push --prefix dist origin gh-pages && gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
     "@vitejs/plugin-react-swc": "^4.0.1",
+    "pinia": "^3.0.3",
     "tailwindcss": "^4.1.12",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@types/bun": "^1.2.21",
+    "@types/node": "^24.3.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
     "gh-pages": "^6.3.0",
