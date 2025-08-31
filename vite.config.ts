@@ -2,12 +2,37 @@ import {defineConfig} from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from '@tailwindcss/vite';
 import tsconfigPaths from "vite-tsconfig-paths";
+import {isNode} from "./src/shared/utils/exec-detection.util.ts";
+import process from "node:process";
+import {parseArgs} from "node:util";
 
 // https://vite.dev/config/
 export default defineConfig(() => {
+
+    const {values} = parseArgs({
+        args: !isNode ? Bun.argv : process.argv,
+        options: {
+            port: {
+                type: 'string',
+            },
+            github: {
+                type: 'boolean',
+            }
+        },
+        strict: true,
+        allowPositionals: true,
+    });
+    const port = Number(values.port);
+    if (values.github) {
+        process.env.VITE_GITHUB_DEPLOY = 'true';
+    }
+
     return {
+        server: {
+            port: isNaN(port) ? 5173 : port,
+        },
         plugins: [tsconfigPaths(), vue(), tailwindcss()],
-        base: process.env.DEST === 'gh' ? "/fe-istudy-sts/" : "",
+        base: values.github ? "/fe-istudy-sts/" : "",
         resolve: {
             alias: {
                 "@": "/",
@@ -22,7 +47,7 @@ export default defineConfig(() => {
             },
         },
         define: {
-            'process.env': process.env
+            'process.versions': process.versions,
         },
         build: {
             assetsDir: 'public',

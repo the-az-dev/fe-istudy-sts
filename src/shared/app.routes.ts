@@ -21,7 +21,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(process.env.DEST === 'gh' ? "/fe-istudy-sts/" : undefined),
+    history: createWebHistory(Boolean(import.meta.env.VITE_GITHUB_DEPLOY) ? "/fe-istudy-sts/" : undefined),
     routes,
 });
 
